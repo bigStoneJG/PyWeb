@@ -1,0 +1,1044 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+            <link rel="canonical" href="http://blog.csdn.net/testcs_dn/article/details/50449048"/> 
+
+    <script type="text/javascript">
+        var username = "testcs_dn";var _blogger = username;var blog_address = "http://blog.csdn.net/testcs_dn";var static_host = "http://static.blog.csdn.net";
+        var currentUserName = ""; var fileName = '50449048';var commentscount = 14; var islock = false
+        window.quickReplyflag = true;
+        var totalFloor=4;
+                
+                 var isBole = false;
+                
+                
+                 var isDigg = false;
+                
+            
+             var isExpert=true;
+            
+          
+        var isAdm=false;
+        
+
+    </script>
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script src="http://c.csdnimg.cn/public/common/libs/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="http://c.csdnimg.cn/public/common/libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://c.csdnimg.cn/public/static/css/avatar.css">
+    <link type="text/css" rel="stylesheet" href="http://static.blog.csdn.net/scripts/SyntaxHighlighter/styles/default.css" />
+    <link rel="stylesheet" href="http://static.blog.csdn.net/Skin/skin3-template/css/style.css?v=2017.040">
+    <link rel="stylesheet" href="http://c.csdnimg.cn/public/common/toolbar/content_toolbar_css/content_toolbar.css">
+              <!-- adhoc sdk -->
+		<script src=https://sdk.appadhoc.com/ab.plus.js></script>
+		<script>
+		adhoc('init', {
+		  appKey: 'ADHOC_0e0bce4f-8793-4f68-89cf-34c14f2532bb',
+		  defaultFlags: {isLogin: true}
+		})
+		</script>
+              <!-- adhoc sdk end -->
+            
+    <script type="text/javascript" src="http://static.blog.csdn.net/Skin/skin3-template/fonts/iconfont.js"></script>
+    <script src="//csdnimg.cn/rabbit/exposure-click/main.js?v1.15.23"></script>
+    <script type="text/javascript" src="http://c.csdnimg.cn/pubfooter/js/tracking_for_recommend.js?v=0911" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csdnimg.cn/pubfooter/js/tracking.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://static.blog.csdn.net/scripts/cnick.js" charset="utf-8"></script>
+ 
+    <link rel="stylesheet" href="http://static.blog.csdn.net/code/prettify.css" />
+    <script type="text/javascript" src="http://static.blog.csdn.net/code/prettify.js"></script>
+<script src="http://dup.baidustatic.com/js/ds.js"></script>
+    <script type="text/javascript">
+
+        // Traffic Stats of the entire Web site By baidu
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?6bcd52f51e9b3dce32bec4a3997715ac";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+        // Traffic Stats of the entire Web site By baidu end
+
+
+
+    </script>
+    <meta name="description" content="上一篇讲了《Python入门》Windows 7下Python Web开发环境搭建笔记，接下来讲一下Python语言Web服务的具体实现：第一个Python Web程序——简单的Web服务器。与其它Web后端语言不同，Python语言需要自己编写Web服务器。如果你使用一些现有的框架的话，可以省略这一步；如果你使用Python CGI编程的话，也可以省略这一步；用Python建立最简单的web服务" />
+    <meta name="keywords" content="python,windows 7" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" /><link rel="alternate" media="handheld" href="#" />
+    <meta name="shenma-site-verification" content="5a59773ab8077d4a62bf469ab966a63b_1497598848">
+
+
+    <title>《Python入门》第一个Python Web程序——简单的Web服务器 - CSDN博客</title>
+</head>
+<body>
+<script id="toolbar-tpl-scriptId" prod="download" skin="black" src="http://c.csdnimg.cn/public/common/toolbar/js/content_toolbar.js" type="text/javascript" domain="http://blog.csdn.net"></script>
+
+<div class="container clearfix">
+    <main>
+        <article>
+            <h1 class="csdn_top">《Python入门》第一个Python Web程序——简单的Web服务器</h1>
+            <div class="article_bar clearfix">
+                <div class="artical_tag">
+                    <span class="original">原创</span>
+                    <span class="time">2016年01月02日 18:52:03</span>
+                </div>
+				<ul class="article_tags clearfix csdn-tracking-statistics" data-mod="popu_377">
+					<li class="tit">标签：</li>
+					
+					<li><a href="http://so.csdn.net/so/search/s.do?q=python&t=blog" target="_blank">python</a> <span>/</span></li>
+					
+					<li><a href="http://so.csdn.net/so/search/s.do?q=windows 7&t=blog" target="_blank">windows 7</a> <span>/</span></li>
+					
+					<li><a href="http://so.csdn.net/so/search/s.do?q=web服务器&t=blog" target="_blank">web服务器</a> <span>/</span></li>
+					
+					<li><a href="http://so.csdn.net/so/search/s.do?q=框架&t=blog" target="_blank">框架</a> <span>/</span></li>
+					
+					<li><a href="http://so.csdn.net/so/search/s.do?q=编程&t=blog" target="_blank">编程</a> <span>/</span></li>
+					
+				</ul>
+                <ul class="right_bar">
+                    <li><button class="btn-noborder"><i class="icon iconfont icon-read"></i><span class="txt">77858</span></button></li>
+                    <!--<li><button class="btn-noborder"><i class="icon iconfont icon-dashang-"></i><span class="txt">0</span></button></li>-->
+
+                    <li class="edit">
+                        <a class="btn-noborder" href="" >
+                            <i class="icon iconfont icon-bianji"></i><span class="txt">编辑</span>
+                        </a>
+                    </li>
+                    <li class="del">
+                        <a class="btn-noborder" onclick="javascript:deleteArticle(fileName);return false;">
+                            <i class="icon iconfont icon-shanchu"></i><span class="txt">删除</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div id="article_content" class="article_content csdn-tracking-statistics" data-mod="popu_307" data-dsm="post">
+                <p></p><p style="color: rgb(51, 51, 51); font-family: Arial; font-size: 14px; line-height: 26px;"><span style="white-space: pre;">	上一篇讲了<a target=_blank target="_blank" href="http://blog.csdn.net/testcs_dn/article/details/50446108">《Python入门》Windows 7下Python Web开发环境搭建笔记</a><a target=_blank target="_blank" href="http://blog.csdn.net/testcs_dn/article/details/50098039" style="color: rgb(51, 102, 153); text-decoration: none;"></a>，接下来讲一下</span>Python语言Web服务的具体实现<span style="white-space: pre;">：第一个Python Web程序——简单的Web服务器。</span></p><p style="color: rgb(51, 51, 51); font-family: Arial; font-size: 14px; line-height: 26px;"><strong>与其它Web后端语言不同，Python语言需要自己编写Web服务器。</strong><br /></p><p style="color: rgb(51, 51, 51); font-family: Arial; font-size: 14px; line-height: 26px;"><strong>如果你使用一些现有的框架的话，可以省略这一步；</strong></p><p style="color: rgb(51, 51, 51); font-family: Arial; font-size: 14px; line-height: 26px;"><strong>如果你使用Python CGI编程的话，也可以省略这一步；</strong></p><h1 style="background:#0076A3; padding:5px; color:white;">用Python建立最简单的web服务器</h1>利用Python自带的包可以建立简单的web服务器。在DOS里cd到准备做服务器根目录的路径下，输入命令：<br /><br /><p>python -m Web服务器模块 [端口号，默认8000]</p>例如：<br /><p>python -m SimpleHTTPServer 8080</p>然后就可以在浏览器中输入<br /><br />http://localhost:端口号/路径<br /><p>来访问服务器资源。&nbsp;</p><p>例如：</p><p>http://localhost:8080/index.htm（当然index.htm文件得自己创建）</p>其他机器也可以通过服务器的IP地址来访问。<br /><br />这里的“Web服务器模块”有如下三种：<br /><p>BaseHTTPServer: 提供基本的Web服务和处理器类，分别是HTTPServer和BaseHTTPRequestHandler。</p>SimpleHTTPServer: 包含执行GET和HEAD请求的SimpleHTTPRequestHandler类。<br /><p>CGIHTTPServer: 包含处理POST请求和执行CGIHTTPRequestHandler类。</p><p></p><h1 style="padding: 5px; color: white; background: rgb(0, 118, 163);">自定义处理程序</h1><p style="line-height: 26px; margin: 20px; color: rgb(34, 34, 34); font-family: Helvetica, Arial, sans-serif; font-size: 16px;">Google在<a target=_blank target="_blank" href="http://chart.apis.google.com/" style="color: rgb(55, 94, 171); text-decoration: none;">http://chart.apis.google.com</a>&nbsp;上提供了一个将表单数据自动转换为图表的服务。不过，该服务很难交互， 因为你需要将数据作为查询放到URL中。此程序为一种数据格式提供了更好的的接口： 给定一小段文本，它将调用图表服务器来生成二维码（QR码），这是一种编码文本的点格矩阵。 该图像可被你的手机摄像头捕获，并解释为一个字符串，比如URL， 这样就免去了你在狭小的手机键盘上键入URL的麻烦。</p><p style="line-height: 26px; margin: 20px; color: rgb(34, 34, 34); font-family: Helvetica, Arial, sans-serif; font-size: 16px;">以下为完整的程序：</p><p style="line-height: 26px; margin: 20px; color: rgb(34, 34, 34); font-family: Helvetica, Arial, sans-serif; font-size: 16px;"></p><pre name="code" class="python">import os	#Python的标准库中的os模块包含普遍的操作系统功能
+import re	#引入正则表达式对象
+import urllib	#用于对URL进行编解码
+from BaseHTTPServer import HTTPServer, BaseHTTPRequestHandler  #导入HTTP处理相关的模块
+
+
+#自定义处理程序，用于处理HTTP请求
+class TestHTTPHandler(BaseHTTPRequestHandler):
+	#处理GET请求
+    def do_GET(self):
+		#页面输出模板字符串
+        templateStr = '''  
+&lt;html&gt;  
+&lt;head&gt;  
+&lt;title&gt;QR Link Generator&lt;/title&gt;  
+&lt;/head&gt;  
+&lt;body&gt;  
+%s
+&lt;br&gt;  
+&lt;br&gt;  
+&lt;form action=&quot;/qr&quot; name=f method=&quot;GET&quot;&gt;&lt;input maxLength=1024 size=70  
+name=s value=&quot;&quot; title=&quot;Text to QR Encode&quot;&gt;&lt;input type=submit  
+value=&quot;Show QR&quot; name=qr&gt;  
+&lt;/form&gt;
+&lt;/body&gt;  
+&lt;/html&gt; '''
+
+
+	# 将正则表达式编译成Pattern对象
+	pattern = re.compile(r'/qr\?s=([^\&amp;]+)\&amp;qr=Show\+QR')
+	# 使用Pattern匹配文本，获得匹配结果，无法匹配时将返回None
+	match = pattern.match(self.path)
+	qrImg = ''
+		
+	if match:
+		# 使用Match获得分组信息
+		qrImg = '&lt;img src=&quot;http://chart.apis.google.com/chart?chs=300x300&amp;cht=qr&amp;choe=UTF-8&amp;chl=' + match.group(1) + '&quot; /&gt;&lt;br /&gt;' + urllib.unquote(match.group(1)) 
+
+	self.protocal_version = 'HTTP/1.1'	#设置协议版本
+	self.send_response(200)	#设置响应状态码
+	self.send_header(&quot;Welcome&quot;, &quot;Contect&quot;)	#设置响应头
+	self.end_headers()
+	self.wfile.write(templateStr % qrImg)	#输出响应内容
+	
+#启动服务函数
+def start_server(port):
+    http_server = HTTPServer(('', int(port)), TestHTTPHandler)
+    http_server.serve_forever()	#设置一直监听并接收请求
+
+os.chdir('static')	#改变工作目录到 static 目录
+start_server(8000)	#启动服务，监听8000端口</pre><p></p><h1 style="padding: 5px; color: white; background: rgb(0, 118, 163);">运行访问</h1><h1 style="margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Arial; line-height: 26px;"></h1><p style="color: rgb(51, 51, 51); font-family: Arial; font-size: 14px; line-height: 26px;">我这里将上面上代码保存为：C:\Python\webserver\server1.py，使用UTF-8编码；</p><p style="color: rgb(51, 51, 51); font-family: Arial; font-size: 14px; line-height: 26px;">打开命令行，切换到&nbsp;<span style="color: rgb(51, 51, 51); font-family: Arial; font-size: 14px; line-height: 26px;">C:\Python\webserver\ 目录，</span></p><p style="color: rgb(51, 51, 51); font-family: Arial; font-size: 14px; line-height: 26px;"><span style="color: rgb(51, 51, 51); font-family: Arial; font-size: 14px; line-height: 26px;">执行：python server1.py</span></p><p style="color: rgb(51, 51, 51); font-family: Arial; font-size: 14px; line-height: 26px;"><span style="color: rgb(51, 51, 51); font-family: Arial; font-size: 14px; line-height: 26px;"><img src="http://img.blog.csdn.net/20160102184011897?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="" /></span></p><p style="color: rgb(51, 51, 51); font-family: Arial; font-size: 14px; line-height: 26px;">可能会弹出防火墙警告，点击允许访问。</p><p style="color: rgb(51, 51, 51); font-family: Arial; font-size: 14px; line-height: 26px;"><img src="http://img.blog.csdn.net/20160102184415042?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="" /><br /></p><p style="color: rgb(51, 51, 51); font-family: Arial; font-size: 14px; line-height: 26px;">在浏览器中访问，查看效果，打开浏览器，输入：<a target=_blank target="_blank" href="http://localhost:8000/" style="color: rgb(51, 102, 153); text-decoration: none;">http://localhost:8000/</a>，结果如下图：</p><p style="color: rgb(51, 51, 51); font-family: Arial; font-size: 14px; line-height: 26px;">在文本框中输入一个URL，如（http://blog.csdn.net/testcs_dn），点击Show QR，会生成一张二维码的图片</p><p style="color: rgb(51, 51, 51); font-family: Arial; font-size: 14px; line-height: 26px;"><img src="http://img.blog.csdn.net/20160102184519762?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="" /><br /></p><p style="color: rgb(51, 51, 51); font-family: Arial; font-size: 14px; line-height: 26px;">扫一扫这张二维码看看吧</p><p style="color: rgb(51, 51, 51); font-family: Arial; font-size: 14px; line-height: 26px;"><img src="http://img.blog.csdn.net/20151203200151185?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="" style="border: none; max-width: 100%;" /><br /></p><p style="color: rgb(51, 51, 51); font-family: Arial; font-size: 14px; line-height: 26px;"></p><h1 style="padding: 5px; color: white; background: rgb(0, 118, 163);">小结</h1><h1 style="margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: Arial; line-height: 26px;"></h1><p style="color: rgb(51, 51, 51); font-family: Arial; font-size: 14px; line-height: 26px;"><strong>与其它Web后端语言不同，Python语言需要自己编写Web服务器；</strong></p><p style="color: rgb(51, 51, 51); font-family: Arial; font-size: 14px; line-height: 26px;"><strong>但与Go语言相比，Python稍微有些难以上手。</strong><br /></p><p style="color: rgb(51, 51, 51); font-family: Arial; font-size: 14px; line-height: 26px;">这里只是编写运行一个简单的例子，看看效果找找感觉。</p><p style="color: rgb(51, 51, 51); font-family: Arial; font-size: 14px; line-height: 26px;">虽然Python的大名已经知道很久，但最近才真正的接触，文中有不对的地方，有更好的方法还请前辈们多多指教！</p><p><br /></p><p>参考：</p><p><a target=_blank href="http://www.runoob.com/python/python-tutorial.html">Python 基础教程</a><br /></p><p><a target=_blank href="http://python.jobbole.com/81524/">一起写一个 Web 服务器</a><br /></p><p><a target=_blank href="http://my.oschina.net/leejun2005/blog/486771">深入理解 Python WSGI：一起写一个 Web 服务器</a><br /></p><p><br /></p><link rel="stylesheet" href="http://static.blog.csdn.net/public/res-min/markdown_views.css?v=2.0" />
+            </div>
+        </article>
+        <div class="readall_box csdn-tracking-statistics" data-mod="popu_376">
+			<div class="read_more_mask"></div>
+            <a class="btn btn-large btn-gray-fred read_more_btn" target="_self">阅读全文</a>
+        </div>
+        <div class="article_copyright">
+            版权声明：本文为 testcs_dn(微wx笑) 原创文章，非商用自由转载-保持署名-注明出处，谢谢。
+        </div>
+        <!--  <div class="reward_box">
+            <div class="tit">
+              <button class="btn_reward"><i class="icon iconfont icon-dashang-"></i></button>
+            </div>
+            <dl class="clearfix">
+              <dt><a href="#" target="_blank">近期打赏</a></dt>
+              <dd><a href="#" target="_blank"><img src="http://avatar.csdn.net/9/3/2/2_nzf_001.jpg" alt="聂兆芳" title="聂兆芳"></a></dd>
+              <dd><a href="#" target="_blank"><img src="http://avatar.csdn.net/9/3/2/2_nzf_001.jpg" alt="聂兆芳" title="聂兆芳"></a></dd>
+              <dd><a href="#" target="_blank"><img src="http://avatar.csdn.net/9/3/2/2_nzf_001.jpg" alt="聂兆芳" title="聂兆芳"></a></dd>
+              <dd><a href="#" target="_blank"><img src="http://avatar.csdn.net/9/3/2/2_nzf_001.jpg" alt="聂兆芳" title="聂兆芳"></a></dd>
+              <dd><a href="#" target="_blank"><img src="http://avatar.csdn.net/9/3/2/2_nzf_001.jpg" alt="聂兆芳" title="聂兆芳"></a></dd>
+            </dl>
+          </div>-->
+
+        <ul class="article_collect clearfix csdn-tracking-statistics"  data-mod="popu_378">
+            <li class="tit">本文已收录于以下专栏：</li>
+            
+        </ul>
+        <div class="comment_box clearfix">
+            <div id="comment_form">
+                <div id="commentsbmitarear">
+                    <!-- <h6><span>14</span>条评论</h6> -->
+           <!--          <dl class="clearfix" id="commentbox">
+                        <dt>
+                            <a href="http://my.csdn.net/"><img src="" ></a>
+                        </dt>
+                        <dd>
+                            <a href="http://my.csdn.net/" target="_blank"></a>
+                        </dd>
+                        <dd class="txt_tip"><span id="tip_comment" class="tip"></span></dd>
+                    </dl> -->
+                    <div class="comment_area clearfix">
+						<div class="userimg"><a href="http://my.csdn.net/"><img src=""></a></div>
+                        <form action="/testcs_dn/comment/submit?id=50449048" method="post" onsubmit="return subform(this);" id="commentform">
+                            <textarea class="comment_content" name="comment_content" id="comment_content" placeholder="发表你的评论"></textarea>
+                            <div class="bot_bar clearfix">
+                                <div id="ubbtools" class="add_code">
+                                    <a href="#insertcode" code="code" target="_self"><i class="icon iconfont icon-daima"></i></a>
+                                </div>
+
+                                <input type="hidden" id="comment_replyId" name="comment_replyId">
+                                <input type="hidden" id="comment_userId" name="comment_userId" value="">
+                                <input type="hidden" id="commentId" name="commentId" value="">
+                                <input type="submit" class="btn btn-redborder" value="发表评论">
+								<span id="tip_comment" class="tip">
+                                <div style="display: none;" class="csdn-tracking-statistics" data-mod="popu_384"><a href="#" target="_blank" class="comment_area_btn">发表评论</a></div>
+
+                                <div id="lang_list" code="code">
+                                    <a href="#html" style="width:95px;" class="long_name" target="_self">HTML/XML</a>
+                                    <a href="#objc" style="width:95px;" class="long_name" target="_self">objective-c</a>
+                                    <a href="#delphi" style="width:58px;" class="zhong_name" target="_self">Delphi</a>
+                                    <a href="#ruby" class="zhong_name" target="_self">Ruby</a>
+                                    <a href="#php" target="_self">PHP</a>
+                                    <a href="#csharp" class="duan_name" target="_self">C#</a>
+                                    <a style=" border-right: none;" href="#cpp" class="duan_name" target="_self">C++</a>
+                                    <a style=" border-bottom:none;width:95px;" href="#javascript" class="long_name" target="_self">JavaScript</a>
+                                    <a style=" border-bottom:none;width:95px;" href="#vb" class="long_name" target="_self">Visual Basic</a>
+                                    <a style=" border-bottom:none;" href="#python" class="zhong_name" target="_self">Python</a>
+                                    <a style=" border-bottom:none;" href="#java" class="zhong_name" target="_self">Java</a>
+                                    <a style="border-bottom:none;" href="#css" class="duan_name" target="_self">CSS</a>
+                                    <a style="border-bottom:none;" href="#sql" class="duan_name" target="_self">SQL</a>
+                                    <a style="border:none; " href="#plain" class="duan_name" target="_self">其它</a>
+                                    <span class="arrb"></span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="comment_li_outbox">
+            <div id="comment_list"></div>
+        </div>
+
+        <div class="more_comment">
+            <div id="comment_bar" class="trackgin-ad" data-mod="popu_385"></div>
+        </div>
+
+        <h3 class="recommend_tit">相关文章推荐</h3>
+        <div class="recommend_list clearfix">
+            
+            <dl class="clearfix csdn-tracking-statistics" data-mod="popu_387" data-poputype="feed"  data-feed-show="false"  data-dsm="post">
+                <dd>
+                    <h2><a href="/xyjnzy/article/details/1915427"  target="_blank" strategy="BlogCommendFromBaidu_0">oracle dblink创建过程</a></h2>
+                    <div class="summary">
+                        两台不同的数据库服务器，从一台数据库服务器的一个用户读取另一台数据库服务器下的某个用户的数据，这个时候可以使用dblink。&#160;&#160;&#160;&#160;&#160;其实dblink和数据库中的view差不多，建dblink的时候需...
+                    </div>
+                    <ul>
+                        <li class="avatar_img"><a href="http://blog.csdn.net/xyjnzy" target="_blank" strategy="BlogCommendFromBaidu_0"><img src="http://avatar.csdn.net/F/0/E/2_xyjnzy.jpg" alt="xyjnzy" title="xyjnzy"></a></li>
+                        <li class="user_name"><a href="http://blog.csdn.net/xyjnzy">xyjnzy</a></li>
+                        <li class="time">2007-12-04 11:54</li>
+                        <li class="visited_num"><i class="icon iconfont icon-read"></i><span>1553</span></li>
+                    </ul>
+                </dd>
+            </dl>
+            
+            <dl class="clearfix csdn-tracking-statistics" data-mod="popu_387" data-poputype="feed"  data-feed-show="false"  data-dsm="post">
+                <dd>
+                    <h2><a href="/testcs_dn/article/details/50931078"  target="_blank" strategy="BlogCommendFromBaidu_2">CentOS下怎么退出telnet</a></h2>
+                    <div class="summary">
+                        在调试一个网络程序时遇到问题，服务启动了，客户端却连接不上；首先就想到了用telnet连接看看；命令和Windows下一样，telnet IP 端口号# telnet 192.168.0.107 11...
+                    </div>
+                    <ul>
+                        <li class="avatar_img"><a href="http://blog.csdn.net/testcs_dn" target="_blank" strategy="BlogCommendFromBaidu_2"><img src="http://avatar.csdn.net/D/1/B/2_testcs_dn.jpg" alt="testcs_dn" title="testcs_dn"></a></li>
+                        <li class="user_name"><a href="http://blog.csdn.net/testcs_dn">testcs_dn</a></li>
+                        <li class="time">2016-03-19 15:19</li>
+                        <li class="visited_num"><i class="icon iconfont icon-read"></i><span>3366</span></li>
+                    </ul>
+                </dd>
+            </dl>
+            
+            <!--dl class="clearfix csdn-tracking-statistics" data-mod="popu_393">
+                <dt><a href="http://edu.csdn.net/huiyiCourse/series_detail/64?utm_source=blog10" target="_blank"><img class="maxwidth" src="http://img.blog.csdn.net/20170928113144608" alt="" title=""></a></dt>
+                <dd>
+                    <div class="summary">
+                        <h2><a href='http://edu.csdn.net/topic/python1?utm_source=blog10' target='_blank'>伤心啊！年度热门编程语言排行榜出来了...</a></h2>  <div class="summary">近期，IEEE Spectrum 发布了第四届顶级编程语言交互排行榜。结合 10 个线上数据源的 12 个标准，对 48 种语言进行了排行！此外，七牛云许式伟曾说过Go语言会取代Java...气氛... </div> 
+                    </div>
+                </dd>
+            </dl-->
+	<script>
+		(function() {
+		    var s = "_" + Math.random().toString(36).slice(2);
+		    document.write('<div id="' + s + '"></div>');
+		    (window.slotbydup=window.slotbydup || []).push({
+			id: '4765209',
+			container: s,
+			size: '808,120',
+			display: 'inlay-fix'
+		    });
+		})();
+	</script>
+            
+            <dl class="clearfix csdn-tracking-statistics" data-mod="popu_387" data-poputype="feed"  data-feed-show="false"  data-dsm="post">
+                <dd>
+                    <h2><a href="/testcs_dn/article/details/77687902"  target="_blank" strategy="BlogCommendFromBaidu_3">Crontab使用语法格式</a></h2>
+                    <div class="summary">
+                        Crontab语法usage: &#160;crontab [-u user] file&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;crontab [-u user] [ -e | -l | -r ]&#160;&#160;&#160;&#160;...
+                    </div>
+                    <ul>
+                        <li class="avatar_img"><a href="http://blog.csdn.net/testcs_dn" target="_blank" strategy="BlogCommendFromBaidu_3"><img src="http://avatar.csdn.net/D/1/B/2_testcs_dn.jpg" alt="testcs_dn" title="testcs_dn"></a></li>
+                        <li class="user_name"><a href="http://blog.csdn.net/testcs_dn">testcs_dn</a></li>
+                        <li class="time">2017-08-29 20:46</li>
+                        <li class="visited_num"><i class="icon iconfont icon-read"></i><span>192</span></li>
+                    </ul>
+                </dd>
+            </dl>
+            
+            <dl class="clearfix csdn-tracking-statistics" data-mod="popu_387" data-poputype="feed"  data-feed-show="false"  data-dsm="post">
+                <dd>
+                    <h2><a href="/u013972559/article/details/75478674"  target="_blank" strategy="BlogCommendFromBaidu_4">Python Web开发Django框架学习（十三）连接MySQL数据库</a></h2>
+                    <div class="summary">
+                        好长时间没写啦，这个阶段，我们继续，真正的开发项目的话，使用的数据库大部分都是MySQL所以我们就来连接一下MySQL数据库。
+第一步：
+要想连接MySQL就必须又python-mysql的驱动程...
+                    </div>
+                    <ul>
+                        <li class="avatar_img"><a href="http://blog.csdn.net/u013972559" target="_blank" strategy="BlogCommendFromBaidu_4"><img src="http://avatar.csdn.net/F/4/B/2_u013972559.jpg" alt="u013972559" title="u013972559"></a></li>
+                        <li class="user_name"><a href="http://blog.csdn.net/u013972559">u013972559</a></li>
+                        <li class="time">2017-07-20 10:28</li>
+                        <li class="visited_num"><i class="icon iconfont icon-read"></i><span>225</span></li>
+                    </ul>
+                </dd>
+            </dl>
+            
+            <dl class="clearfix csdn-tracking-statistics" data-mod="popu_387" data-poputype="feed"  data-feed-show="false"  data-dsm="post">
+                <dd>
+                    <h2><a href="/pi9nc/article/details/23204449"  target="_blank" strategy="BlogCommendFromBaidu_5">从零开始，使用python快速开发web站点（1）</a></h2>
+                    <div class="summary">
+                        分类：&#160;web2013-08-25
+ 18:35&#160;438人阅读&#160;评论(0)&#160;收藏&#160;举报
+pythonwebubuntu
+
+环境：ubuntu 12.04
+python版本:&#160; 2.73
+...
+                    </div>
+                    <ul>
+                        <li class="avatar_img"><a href="http://blog.csdn.net/pi9nc" target="_blank" strategy="BlogCommendFromBaidu_5"><img src="http://avatar.csdn.net/8/9/C/2_pi9nc.jpg" alt="pi9nc" title="pi9nc"></a></li>
+                        <li class="user_name"><a href="http://blog.csdn.net/pi9nc">pi9nc</a></li>
+                        <li class="time">2014-04-08 20:10</li>
+                        <li class="visited_num"><i class="icon iconfont icon-read"></i><span>78694</span></li>
+                    </ul>
+                </dd>
+            </dl>
+            
+            <dl class="clearfix csdn-tracking-statistics" data-mod="popu_387" data-poputype="feed"  data-feed-show="false"  data-dsm="post">
+                <dd>
+                    <h2><a href="/baidu_35085676/article/details/69807145"  target="_blank" strategy="BlogCommendFromBaidu_6">python开发web服务器——搭建简易网站</a></h2>
+                    <div class="summary">
+                        目标用已有的丰富图片资源建一个看图网站条件开发语言：python3库：flask  :一个开源的python web服务器框架 
+jinja2:flask默认的模板引擎编辑器：推荐pycharm一个最...
+                    </div>
+                    <ul>
+                        <li class="avatar_img"><a href="http://blog.csdn.net/baidu_35085676" target="_blank" strategy="BlogCommendFromBaidu_6"><img src="http://avatar.csdn.net/9/E/1/2_baidu_35085676.jpg" alt="baidu_35085676" title="baidu_35085676"></a></li>
+                        <li class="user_name"><a href="http://blog.csdn.net/baidu_35085676">baidu_35085676</a></li>
+                        <li class="time">2017-04-09 12:06</li>
+                        <li class="visited_num"><i class="icon iconfont icon-read"></i><span>2520</span></li>
+                    </ul>
+                </dd>
+            </dl>
+            
+            <dl class="clearfix csdn-tracking-statistics" data-mod="popu_387" data-poputype="feed"  data-feed-show="false"  data-dsm="post">
+                <dd>
+                    <h2><a href="/thor_selen_liu/article/details/74625670"  target="_blank" strategy="BlogCommendFromBaidu_7">Python进行web开发--django</a></h2>
+                    <div class="summary">
+                        使用dows命令操作网络页面：
+步骤如下：
+1.先在某磁盘下建立一个新的文件夹web(文件夹名，任意取名)，web文件夹下再新建一个blog文件夹(任意取名)
+2.根据idea软件开发工具中保存...
+                    </div>
+                    <ul>
+                        <li class="avatar_img"><a href="http://blog.csdn.net/Thor_Selen_Liu" target="_blank" strategy="BlogCommendFromBaidu_7"><img src="http://avatar.csdn.net/A/1/5/2_thor_selen_liu.jpg" alt="Thor_Selen_Liu" title="Thor_Selen_Liu"></a></li>
+                        <li class="user_name"><a href="http://blog.csdn.net/Thor_Selen_Liu">Thor_Selen_Liu</a></li>
+                        <li class="time">2017-07-07 08:53</li>
+                        <li class="visited_num"><i class="icon iconfont icon-read"></i><span>241</span></li>
+                    </ul>
+                </dd>
+            </dl>
+            
+            <dl class="clearfix csdn-tracking-statistics" data-mod="popu_387" data-poputype="feed"  data-feed-show="false"  data-dsm="post">
+                <dd>
+                    <h2><a href="/testcs_dn/article/details/50446108"  target="_blank" strategy="BlogCommendFromBaidu_8">《Python入门》Windows 7下Python Web开发环境搭建笔记</a></h2>
+                    <div class="summary">
+                        最近想尝试一下在IBM Bluemix上使用Python语言创建Web应用程序，所以需要在本地搭建Python Web的开发测试环境。关于Python的版本	进入Python的网站，鼠标移到导航条上的...
+                    </div>
+                    <ul>
+                        <li class="avatar_img"><a href="http://blog.csdn.net/testcs_dn" target="_blank" strategy="BlogCommendFromBaidu_8"><img src="http://avatar.csdn.net/D/1/B/2_testcs_dn.jpg" alt="testcs_dn" title="testcs_dn"></a></li>
+                        <li class="user_name"><a href="http://blog.csdn.net/testcs_dn">testcs_dn</a></li>
+                        <li class="time">2016-01-02 11:24</li>
+                        <li class="visited_num"><i class="icon iconfont icon-read"></i><span>11880</span></li>
+                    </ul>
+                </dd>
+            </dl>
+            
+            <dl class="clearfix csdn-tracking-statistics" data-mod="popu_387" data-poputype="feed"  data-feed-show="false"  data-dsm="post">
+                <dd>
+                    <h2><a href="/zh26622/article/details/49867605"  target="_blank" strategy="BlogCommendFromBaidu_9">python web开发--Django 学习</a></h2>
+                    <div class="summary">
+                        学习极客学院视频。
+软件安装
+1、python2.7.3&#160;
+2、pycharm
+3、下载Django 1.8.6 ，在文件目录下使用python setup.py install。
+报错no mode...
+                    </div>
+                    <ul>
+                        <li class="avatar_img"><a href="http://blog.csdn.net/zh26622" target="_blank" strategy="BlogCommendFromBaidu_9"><img src="http://avatar.csdn.net/2/B/A/2_zh26622.jpg" alt="zh26622" title="zh26622"></a></li>
+                        <li class="user_name"><a href="http://blog.csdn.net/zh26622">zh26622</a></li>
+                        <li class="time">2015-11-16 16:24</li>
+                        <li class="visited_num"><i class="icon iconfont icon-read"></i><span>611</span></li>
+                    </ul>
+                </dd>
+            </dl>
+            
+
+	   
+
+            
+
+            
+        </div>
+    </main>
+    <aside>
+        <div class="right_box user_info">
+            <dl class="inf_bar clearfix">
+                <dt class="csdn-tracking-statistics" data-mod="popu_381">
+                    <a href="http://blog.csdn.net/testcs_dn" target="_blank">
+                        <img src="http://avatar.csdn.net/D/1/B/1_testcs_dn.jpg" class="avatar_pic">
+                    </a>
+                    <span class="medals" title="">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-bokezhuanjia"></use>
+                </svg>
+              </span>
+                </dt>
+                <dd>
+                    <h3 class="csdn-tracking-statistics"  data-mod="popu_380"><a href="http://blog.csdn.net/testcs_dn" target="_blank" id="uid">testcs_dn</a></h3>
+                    <span  class="csdn-tracking-statistics" data-mod="popu_379"><a class="btn btn-redborder-small "  id="span_add_follow" target="_self">＋关注</a></span>
+                </dd>
+            </dl>
+            <div class="inf_number_box clearfix">
+                <dl>
+                    <dt>原创</dt>
+                    <dd>806</dd>
+                </dl>
+                <dl>
+                    <dt>粉丝</dt>
+                    <dd id='fan'>4315</dd>
+                </dl>
+                <dl>
+                    <dt>喜欢</dt>
+                    <dd>0</dd>
+                </dl>
+								 <dl>
+              <dt>码云</dt>
+              <dd>&nbsp;</dd>
+            </dl>
+
+            </div>
+	    <div class="writings">
+              <div class="public_signal clearfix">
+                <h3>他的最新文章</h3>
+                <a href="http://blog.csdn.net/testcs_dn" target="_blank" class="more_z"><span>更多文章</span></a>
+              </div>
+                <ul class="inf_list clearfix csdn-tracking-statistics" data-mod="popu_382">
+                    
+                    <li class="clearfix">
+                      
+                        <a href="/testcs_dn/article/details/78372800" target="_blank">关于1024，我有个疑问</a>
+                    </li>
+                    
+                    <li class="clearfix">
+                      
+                        <a href="/testcs_dn/article/details/78367152" target="_blank">Spring MVC环境中文件上传大小和文件类型限制以及超大文件上传bug问题</a>
+                    </li>
+                    
+                    <li class="clearfix">
+                      
+                        <a href="/testcs_dn/article/details/78366272" target="_blank">解决上传文件时 nginx 413 Request Entity Too Large 错误</a>
+                    </li>
+                    
+                    <li class="clearfix">
+                      
+                        <a href="/testcs_dn/article/details/78358305" target="_blank">一张图看懂手机CPU性能——手机CPU性能天梯图</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="extension_other csdn-tracking-statistics" data-mod="popu_389">
+						<!--u3032528-->
+			<div class="flashrecommend">
+
+<!-- 请置于所有广告位代码之前 -->
+<script src="http://dup.baidustatic.com/js/dm.js"></script>
+           
+<!-- 广告位：PC端-博客详情页右侧视窗1（feed流）-300*250 -->
+<script>
+(function() {
+    var s = "_" + Math.random().toString(36).slice(2);
+    document.write('<div id="' + s + '"></div>');
+    (window.slotbydup=window.slotbydup || []).push({
+        id: '4770930',
+        container: s,
+        size: '300,250',
+        display: 'inlay-fix'
+    });
+})();
+</script>
+
+		    </div>
+        </div>
+
+		<div class="host-column">
+          <h3>博主专栏</h3>
+          <ul class="column-list">
+
+            <li class="clearfix">
+              <div class="img list-left">
+                <a href="http://blog.csdn.net/column/details/javaeclipse.html">
+                  <img src="http://img.blog.csdn.net/20151123180323270" alt="">
+                  <div>158</div>
+                </a>
+              </div>
+              <div class="content list-left">
+                <h4 class="title"><a href="http://blog.csdn.net/column/details/javaeclipse.html">JAVA学习实践及问题记录</a></h4>
+                <div class="read list-left"><i class="icon iconfont icon-read"></i><span>2295685</span></div>
+              </div>
+            </li>
+
+            <li class="clearfix">
+              <div class="img list-left">
+                <a href="http://blog.csdn.net/column/details/vcmfc.html">
+                  <img src="http://img.blog.csdn.net/20151123180305989" alt="">
+                  <div>33</div>
+                </a>
+              </div>
+              <div class="content list-left">
+                <h4 class="title"><a href="http://blog.csdn.net/column/details/vcmfc.html">VC学习实践及问题记录</a></h4>
+                <div class="read list-left"><i class="icon iconfont icon-read"></i><span>215990</span></div>
+              </div>
+            </li>
+
+            <li class="clearfix">
+              <div class="img list-left">
+                <a href="http://blog.csdn.net/column/details/markdown.html">
+                  <img src="http://img.blog.csdn.net/20151123180223895" alt="">
+                  <div>16</div>
+                </a>
+              </div>
+              <div class="content list-left">
+                <h4 class="title"><a href="http://blog.csdn.net/column/details/markdown.html">Markdown</a></h4>
+                <div class="read list-left"><i class="icon iconfont icon-read"></i><span>181202</span></div>
+              </div>
+            </li>
+
+            <li class="clearfix">
+              <div class="img list-left">
+                <a href="http://blog.csdn.net/column/details/nosql.html">
+                  <img src="http://img.blog.csdn.net/20151123180217474" alt="">
+                  <div>4</div>
+                </a>
+              </div>
+              <div class="content list-left">
+                <h4 class="title"><a href="http://blog.csdn.net/column/details/nosql.html">NoSQL入门与提高</a></h4>
+                <div class="read list-left"><i class="icon iconfont icon-read"></i><span>16183</span></div>
+              </div>
+            </li>
+
+            <li class="clearfix">
+              <div class="img list-left">
+                <a href="http://blog.csdn.net/column/details/centos.html">
+                  <img src="http://img.blog.csdn.net/20151123180208458" alt="">
+                  <div>29</div>
+                </a>
+              </div>
+              <div class="content list-left">
+                <h4 class="title"><a href="http://blog.csdn.net/column/details/centos.html">CentOS服务器配置管理</a></h4>
+                <div class="read list-left"><i class="icon iconfont icon-read"></i><span>408124</span></div>
+              </div>
+            </li>
+
+            <li class="clearfix">
+              <div class="img list-left">
+                <a href="http://blog.csdn.net/column/details/mysqltw.html">
+                  <img src="http://img.blog.csdn.net/20151123175832567" alt="">
+                  <div>18</div>
+                </a>
+              </div>
+              <div class="content list-left">
+                <h4 class="title"><a href="http://blog.csdn.net/column/details/mysqltw.html">MySQL图文进阶</a></h4>
+                <div class="read list-left"><i class="icon iconfont icon-read"></i><span>374899</span></div>
+              </div>
+            </li>
+
+            <li class="clearfix">
+              <div class="img list-left">
+                <a href="http://blog.csdn.net/column/details/cssoftdev.html">
+                  <img src="http://img.blog.csdn.net/20151123175809442" alt="">
+                  <div>44</div>
+                </a>
+              </div>
+              <div class="content list-left">
+                <h4 class="title"><a href="http://blog.csdn.net/column/details/cssoftdev.html">C#软件开发实例</a></h4>
+                <div class="read list-left"><i class="icon iconfont icon-read"></i><span>398623</span></div>
+              </div>
+            </li>
+
+          </ul>
+          <div class="unfold-btn">
+            <span>展开</span><i class="icon iconfont icon-xiajiantou"></i>
+          </div>
+        </div>
+		
+        
+        <div class="fixRight">
+            <div class="right_box padb0 csdn-tracking-statistics" data-mod="popu_391">
+                <h3 class="tit"><span><em>在线课程</em></span></h3>
+                <ul class="edu_li clearfix">
+                  
+                  <li>
+                    <div>
+                      <a href="http://edu.csdn.net/huiyiCourse/detail/596?utm_source=blog7" target="_blank">
+                        <img src="http://img.bss.csdn.net/201710311140403792.png" alt="【福利】神经网络的原理及结构设计" title="【福利】神经网络的原理及结构设计">
+                      </a>
+                    </div>
+                    <div>
+                      <p><a href="http://edu.csdn.net/huiyiCourse/detail/596?utm_source=blog7" target="_blank">【福利】神经网络的原理及结构设计</a></p>
+                      <p>讲师：</p>
+                    </div>
+                  </li>
+                  
+                  <li>
+                    <div>
+                      <a href="http://edu.csdn.net/huiyiCourse/detail/593?utm_source=blog7" target="_blank">
+                        <img src="http://img.bss.csdn.net/201710311546151526.jpg" alt="互联网职业选择那点事" title="互联网职业选择那点事">
+                      </a>
+                    </div>
+                    <div>
+                      <p><a href="http://edu.csdn.net/huiyiCourse/detail/593?utm_source=blog7" target="_blank">互联网职业选择那点事</a></p>
+                      <p>讲师：</p>
+                    </div>
+                  </li>
+                  
+                </ul>
+            </div>
+			<!--u3032529-->
+            <!-- <div class="extension_other csdn-tracking-statistics baidu_box" data-mod="popu_395">
+								
+                <script type="text/javascript" src="http://mpb1.iteye.com/cxpdpmumfaedgm.js"></script>
+            </div> -->
+			<div class="extension_other csdn-tracking-statistics bottomRcom" data-mod="popu_389" style="position:absolute;z-index:-5;opacity:0;pointer-events:none">
+						<!--u3032528-->
+				<div class="flashrecommend">
+				<script type="text/javascript" src="http://mpb1.iteye.com/bwocoltlyzdec.js"></script>
+				</div>
+			</div>
+        </div>
+		<div class="user-hotArticle">
+          <h3>热门文章</h3>
+          <ul class="hotArticle-list">
+ 
+            <li>
+              <a href="/testcs_dn/article/details/39643119">xxx cannot be resolved to a type 错误解决方法</a>
+              <div class="read list-left"><i class="icon iconfont icon-read"></i><span>306184</span></div>
+            </li>
+ 
+            <li>
+              <a href="/testcs_dn/article/details/40431835">js如何判断一个对象{}是否为空对象，没有任何属性</a>
+              <div class="read list-left"><i class="icon iconfont icon-read"></i><span>176540</span></div>
+            </li>
+ 
+            <li>
+              <a href="/testcs_dn/article/details/39077599">Uncaught SyntaxError: Unexpected token )</a>
+              <div class="read list-left"><i class="icon iconfont icon-read"></i><span>175408</span></div>
+            </li>
+ 
+            <li>
+              <a href="/testcs_dn/article/details/36455669">The superclass &quot;javax.servlet.http.HttpServlet&quot; was not found on the Java Build Path</a>
+              <div class="read list-left"><i class="icon iconfont icon-read"></i><span>149118</span></div>
+            </li>
+ 
+            <li>
+              <a href="/testcs_dn/article/details/41824497">A child container failed during start</a>
+              <div class="read list-left"><i class="icon iconfont icon-read"></i><span>134621</span></div>
+            </li>
+ 
+          </ul>
+        </div>
+
+
+    </aside>
+</div>
+
+<div class="left_fixed">
+      <div class="left_show_button">
+        <span>
+          <i class="icon iconfont icon-youjiantou"></i>
+        </span>
+      </div>
+    <ul class="left_menu">
+
+        <li>
+            <button class="left-fixed-btn btn-like csdn-tracking-statistics" data-mod="popu_373" target="_self">
+                <span class="iconbox border_red"><i class="icon iconfont icon-dianzan"></i></span>
+				<span class="txt">14</span>
+            </button>
+        </li>
+		<li id="blog_artical_directory">
+            <button class="left-fixed-btn left_menu_btn csdn-tracking-statistics" data-mod="popu_372" target="_self">
+                <span class="iconbox border_black"><i class="icon iconfont icon-mulu"></i></span>
+            </button>
+        </li>
+        <li class="menu_con">
+            <div class="list_father">
+                <div class="arr_box">
+                    <button class="btn-noborder arr-btn scroll-down  left_scroll_down"><i class="icon iconfont icon-xiajiantou"></i></button>
+                    <button class="btn-noborder arr-btn scroll-up left_scroll_top"><i class="icon iconfont icon-shangjiantou"></i></button>
+                </div>
+                <div class="arr"></div>
+                <div id="csdnBlogDir"></div>
+            </div>
+        </li>
+        <li>
+            <button class="left-fixed-btn csdn-tracking-statistics" data-mod="popu_374"  id="com-quick-collect" target="_self">
+                <span class="iconbox border_purple"><i class="icon iconfont icon-shoucang"></i></span>
+    
+            </button>
+        </li>
+		<li>
+          <button class="left-fixed-btn btn-pinglun" >
+            <span class="iconbox border_purple"><i class="icon iconfont icon-pinglun"></i></span>
+          </button>
+        </li>
+        <li id="share_box">
+            <button class="left-fixed-btn  csdn-tracking-statistics"  data-mod="popu_375" target="_self">
+                <span class="iconbox border_orange"><i class="icon iconfont icon-fenxiang"></i></span>
+            </button>
+            <div class="bdsharebuttonbox csdn-tracking-statistics" data-mod="popu_172">
+                <div class="outside">
+                    <span class="iconbox border_red2"><i class="icon iconfont icon-xinlang"></i></span>
+                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"> </a>
+                </div>
+                <div class="outside">
+                    <span class="iconbox border_green"><i class="icon iconfont icon-weixin"></i></span>
+                    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"> </a>
+                </div>
+                <div class="outside">
+                    <span class="iconbox border_blue"><i class="icon iconfont icon-QQ"></i></span>
+                    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"> </a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="right_fixed">
+  <div class="r_ico">
+	<i class="icon iconfont icon-jubao"></i>
+	<span class="txt" id="reportBtn">内容举报</span>
+  </div>
+  <div class="returnTop">
+   <i class="icon iconfont icon-fanhuidingbu"></i>
+   <span>返回顶部</span>
+ </div>
+</div>
+<div id="pop_win"></div>
+<div id="popup_mask"></div>
+<div class="pop_CA_cover" ></div>
+<div class="pop pop_CA" >
+    <div class="CA_header">
+        收藏助手
+        <span class="cancel_icon"  id="fapancle" ></span>
+    </div>
+    <iframe src="" id="collectIframe" frameborder="0" width="100%" height="360"  scrolling="no" ></iframe>
+</div>
+<!--举报-->
+<div id="report_dialog" style="top: 250px; left: 343.5px;"><div id="panel_report">
+    <div class="panel_head">不良信息举报</div>
+    <form method="post" id="frmReport" class="panel_body">
+        <table border="0" cellpadding="0" cellspacing="4" class="pop_table">
+            <tbody><tr><td colspan="2">您举报文章：<a href="http://blog.csdn.net/raintungli/article/details/76583070" target="_blank">深度学习：神经网络中的前向传播和反向传播算法推导</a></td></tr>
+            <tr>
+                <th style="width:60px;">举报原因：</th>
+                <td id="panel_reporttype">
+                    <label><input type="radio" class="report_type" id="report_sex" name="report_type" value="1">色情</label>
+                    <label><input type="radio" class="report_type" id="report_Politics" name="report_type" value="2">政治</label>
+                    <label><input type="radio" class="report_type" id="report_copy" name="report_type" value="3">抄袭</label>
+                    <label><input type="radio" class="report_type" id="report_ad" name="report_type" value="4">广告</label>
+                    <label><input type="radio" class="report_type" id="report_want" name="report_type" value="5">招聘</label>
+                    <label><input type="radio" class="report_type" id="report_call" name="report_type" value="6">骂人</label>
+                    <br>
+                    <label><input type="radio" class="report_type" id="report_other" name="report_type" value="7">其他</label>
+                    <input type="text" name="report_other_content" id="report_other_content" maxlength="30" style="display: none;">
+                </td>
+            </tr>
+            <tr id="panel_originalurl" style="display: none;">
+                <th>原文地址：</th>
+                <td>
+                    <input id="originalurl" value="http://" name="originalurl" type="text" style="width: 90%;">
+                </td>
+            </tr>
+            <tr>
+                <th id="sp_reason">原因补充：</th>
+                <td>
+                    <textarea id="report_description" style="width: 300px;" rows="3" name="report_description"></textarea>
+                    <p id="sp_n" style="color:#999;margin:0px;padding:0px;">(最多只允许输入30个字)</p>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input id="btnSubmitReport" name="submit" type="image" align="middle" class="btn_1" src="http://static.blog.csdn.net/images/btn_submit.jpg">
+                    <span style="padding-left:20px;"></span>
+                    <img id="btnCloseReportDialog" src="http://static.blog.csdn.net/images/btn_cancel.jpg" align="middle">
+                    <div id="error" style="color: Red">
+                    </div>
+                </td>
+            </tr>
+            </tbody></table>
+    </form>
+</div>
+    <script language="javascript" type="text/javascript">
+        var isComment=0;
+        //显示隐藏地址
+        $(function () {
+            if(isComment){
+                $("#report_description").attr("disabled",true);
+                $("#sp_n").hide();
+                $("#sp_reason").html("评论内容：");
+            }
+            $(".report_type").click(function () {
+                $("#panel_originalurl,#report_other_content").hide();
+                switch ($(this).val()) {
+                    case '3':
+                        $("#panel_originalurl").show();
+                        $("#originalurl").focus();
+                        break;
+                    case '7':
+                        if(isComment){
+                            $("#report_other_content").show().focus();
+                        }
+                        break;
+                }
+
+            });
+
+            $("#frmReport").submit(function () {
+                if (!currentUserName) {
+
+                    if (confirm("您的操作必须登录，是否登录？")) {
+                        location.href = "http://passport.csdn.net/account/login?from=" + encodeURIComponent(location.href);
+                        return false;
+                    }
+                    return false;
+                }
+
+                var reportType = $("input[name=report_type]:checked").val();
+                if(!reportType){
+                    alert("请选择举报原因！");
+                    return false;
+                }
+                var otherInfo = "";
+                switch (reportType) {
+                    case '3':
+                        otherInfo = $("#originalurl").val();
+                        if (otherInfo == ""||otherInfo=="http://") {
+                            alert("举报抄袭必须提供原创文章地址！");
+                            $("#originalurl").focus();
+                            return false;
+                        } else if(!checkeURL(otherInfo)) {
+                            alert("请输入正确的原创文章地址！");
+                            $("#originalurl").focus();
+                            return false;
+                        }
+                        break;
+                    case '7':
+                        otherInfo = $("#report_other_content").val();
+                        if (isComment && !otherInfo) {
+                            alert("请填写举报的具体原因！");
+                            $("#report_other_content").focus();
+                            return false;
+                        }
+                        if(!isComment){
+                            if(!$("#report_description").val()){
+                                alert("请填写举报的具体原因！");
+                                $("#report_description").focus();
+                                return false;
+                            }
+                        }
+                        break;
+                }
+                if(!isComment){
+                    if($("#report_description").val().length>30){
+                        alert("举报原因最多只允许输入30个字！");
+                        return false;
+                    }
+                }
+                nowTime = {
+                  year: new Date().getFullYear(),
+                  month: parseInt(new Date().getMonth())+1,
+                  day: new Date().getDate(),
+                  hours: parseInt(new Date().getHours()),
+                  minutes: parseInt(new Date().getMinutes()),
+                  seconds: parseInt(new Date().getSeconds())
+                }
+                var data = {
+                    articleId: fileName,
+                    commentId: 0,
+                    reportType: reportType,
+                    originalurl: $("#originalurl").val(),
+                    report_other_content: $("#report_other_content").val(),
+                    report_description: $("#report_description").val(),
+                    currentUserName: currentUserName,
+                    updatetime: nowTime.year+'/'+nowTime.month+'/'+nowTime.day+' '+ nowTime.hours+':'+nowTime.minutes+':'+seconds,
+                    blogUser: username
+                };
+                if(!isComment){//如果是举报文章
+                    data.report_other_content = data.report_description;
+                    // data.report_description = "1. 神经网络这是一个常见的神经网络的图：这是一个常见的三层神经网络的基本构成，Layer L1是输入层，Layer L2是隐含层";
+                }
+
+                $.post(blog_address + "/common/report?id="+fileName+"&t=2", data, function (data) {
+                    if (data.result == 1){
+                        SetError("感谢您的举报，我们会尽快审核！");
+                    }else{
+                        if (data.content) alert(data.content);
+                    }
+
+                });
+                return false;
+            });
+
+            $("#btnCloseReportDialog").click(function () {
+                CloseDiv();
+            });
+
+        });
+
+        //提示后关闭方法
+        function SetError(error) {
+            $("#btnCloseReportDialog").trigger("click");
+            alert(error);
+            CloseDiv();
+        }
+
+        //关闭方法
+        function CloseDiv() {
+
+            $.removeMask();
+            $("#report_dialog").hide();
+            return false;
+        }
+
+        //验证url
+        function checkeURL(url){
+            return /^http(s)?:\/\/([\w-]+\.)+[\w-]+/i.test(url);
+        }
+
+    </script>
+</div>
+
+<script src="http://c.csdnimg.cn/public/common/libs/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="http://static.blog.csdn.net/public/res/bower-libs/MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<script type="text/javascript" src="http://passport.csdn.net/content/loginbox/login.js"></script>
+
+<script type="text/javascript" src="http://static.blog.csdn.net/Skin/skin3-template/js/blog_ver.js?v=2017.040"></script>
+<script type="text/javascript" src="http://static.blog.csdn.net/Skin/skin3-template/js/skin2017.js?v=2017.040"></script>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/cnick.js"></script>
+<script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+<script type="text/javascript" >
+    if($(".article_collect li").length==1){$(".article_collect").hide();}
+    if($(".article_tags li").length==1){$(".article_tags").hide();}
+    $(".edit a").attr("href","http://write.blog.csdn.net/postedit/"+fileName);
+    $.each($(".edu_li a"),function(){$(this).attr("href",$(this).attr("href").replace("blog7","blog9"))});
+    new CNick('#uid').showNickname();
+if($("#fan").html()=="")
+{
+$("#fan").html(0);	
+}
+
+var blogCustomType ='{customtype}';
+                
+        $("#custom"+blogCustomType).show();
+
+</script>
+</body>
+
+<script  type="text/javascript">
+    var fromjs=$("#fromjs");
+    if(fromjs.length>0)
+    {                  
+        $("#fromjs .markdown_views pre").addClass("prettyprint");       
+        prettyPrint();
+
+        $('pre.prettyprint code').each(function () {
+            var lines = $(this).text().split('\n').length;
+            var $numbering = $('<ul/>').addClass('pre-numbering').hide();
+            $(this).addClass('has-numbering').parent().append($numbering);
+            for (i = 1; i <= lines; i++) {
+                $numbering.append($('<li/>').text(i));
+            };
+            $numbering.fadeIn(1700);
+        });
+
+        $('.pre-numbering li').css("color","#999");             
+    }
+
+    $(function(){
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },500);         
+       
+
+    });
+
+    setTimeout(function () {
+        $(".toc a[target='_blank']").attr("target", "");
+    }, 500);
+
+</script>
+</html>
+
