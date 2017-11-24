@@ -1,6 +1,7 @@
 #-*- coding:utf-8 -*-
 import BaseHTTPServer
 
+
 class RequestHander(BaseHTTPServer.BaseHTTPRequestHandler):
 
     Page = '''\
@@ -25,6 +26,9 @@ class RequestHander(BaseHTTPServer.BaseHTTPRequestHandler):
             self.send_error(404,'file not found:%s' %self.path)
 
 if __name__ == '__main__':
+#    print("github test1")
+#   print ("github test2")
+#   print("github test3")
     serverAddress = ('',8080)
     server = BaseHTTPServer.HTTPServer(serverAddress,RequestHander)
     server.serve_forever()
