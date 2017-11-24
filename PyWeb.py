@@ -29,6 +29,9 @@ if __name__ == '__main__':
 #    print("github test1")
 #   print ("github test2")
 #   print("github test3")
+    print "test1"
     serverAddress = ('',8080)
     server = BaseHTTPServer.HTTPServer(serverAddress,RequestHander)
     server.serve_forever()
+
+
